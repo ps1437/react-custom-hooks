@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import CodePreview from './components/CodePreview';
+import UseFetchSection from './components/sections/UseFetchSection';
+import UseWindowResizeSection from './components/sections/UseWindowResizeSection';
+import UseTimerSection from './components/sections/UseTimerSection';
+import UseDebounceSection from './components/sections/UseDebounceSection';
+
+
 
 function App() {
+  const [selectedHook, setSelectedHook] = useState(null);
+  const [showPreview, setShowPreview] = useState(false);
+  const [component, setComponent] = useState();
+
+  const handleClick = (hookCode) => {
+    setSelectedHook(hookCode);
+    setShowPreview(true);
+  };
+
+  const handleClosePreview = () => {
+    setShowPreview(false);
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="main-header">Hook-Up-Hooks</h1>
+      <div className="app-container">
+        <UseFetchSection renderComponent={setComponent} handleClick={handleClick} />
+        <UseWindowResizeSection renderComponent={setComponent} handleClick={handleClick} />
+        <UseTimerSection renderComponent={setComponent}  handleClick={handleClick} />
+        <UseDebounceSection renderComponent={setComponent} handleClick={handleClick} />
+</div>
+      
+      {showPreview && <CodePreview 
+      renderComponent ={component}
+      code={selectedHook} onClose={handleClosePreview} />}
+
     </div>
   );
 }
+
 
 export default App;

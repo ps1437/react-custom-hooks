@@ -1,38 +1,135 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+body {
+  background-color: #1976d2;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.main-header {
+  font-size: 24px;
+  font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
+  padding: 4px;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 900;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hook-section {
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  margin: 5px;
+  max-width: 400px;
+  background-color: #EEFFFF;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
+}
+
+.hook-heading {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px;
+  color: #333;
+  background-color: #a3b3c5;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.hook-description {
+  color: #333;
+}
+
+.cm-s-material.CodeMirror {
+  background-color: #263238;
+  color: #EEFFFF;
+  height: 428px !important;
+}
+
+.hook-description {
+  margin-bottom: 16px;
+  color: #666;
+}
+
+
+
+/* CodePreview */
+.code-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.code-preview-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 75%;
+  height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.copy-button,
+.close-button {
+  background-color: #007bff;
+  color: #fff;
+  margin: 4px;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.copy-button:hover,
+.close-button:hover {
+  background-color: #0056b3;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+}
+
+.code-editor,
+.code-render {
+  flex: 1;
+  padding: 10px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.code-render {
+  flex: 0.8;
+
+  background-color: #f0f0f0;
+  border-left: 1px solid #ccc;
 }
