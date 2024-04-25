@@ -20,7 +20,8 @@ body {
 
 .app-container {
   display: flex;
-  align-items: flex-start;
+ justify-content: center;
+ align-items: center;
   flex-wrap: wrap;
   padding: 20px;
 }
@@ -36,6 +37,11 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  max-width: 250px;
+  min-height: 130px;
+  max-height: 130px;
+  
+
 }
 
 .hook-heading {
@@ -80,7 +86,7 @@ body {
 
 .code-preview-content {
   background-color: #fff;
-  padding: 20px;
+  padding: 12px;
   width: 75%;
   height: 90%;
   border-radius: 8px;
@@ -129,7 +135,6 @@ body {
 
 .code-render {
   flex: 0.8;
-
   background-color: #f0f0f0;
   border-left: 1px solid #ccc;
 }

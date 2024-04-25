@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# React Custom hooks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 1. useDebounce
 
-## Available Scripts
+#### Description
+A custom React hook for debouncing a value, delaying updates until a specified time has passed without further changes.
 
-In the project directory, you can run:
+#### Parameters
+- `value`: The value to debounce.
+- `delay`: The delay in milliseconds before the debounced value is updated.
 
-### `npm start`
+#### Usage
+```javascript
+import React, { useState } from 'react';
+import useDebounce from './useDebounce';
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+const MyComponent = () => {
+  const [inputValue, setInputValue] = useState('');
+  const debouncedValue = useDebounce(inputValue, 500);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
-### `npm test`
+  return (
+    <div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleChange}
+        placeholder="Type something..."
+      />
+      <p>Debounced value: {debouncedValue}</p>
+    </div>
+  ); 
+};
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. useFetch
 
-### `npm run build`
+#### Description
+A custom React hook for fetching data from an API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Parameters
+- `url`: The URL of the API endpoint.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Usage
+```javascript
+import React from 'react';
+import useFetch from './useFetch';
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const MyComponent = () => {
+  const { loading, error, data } = useFetch('https://api.example.com/data');
 
-### `npm run eject`
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  return <div>{JSON.stringify(data)}</div>;
+};
+```
+### 3. useWindowResize
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Description
+A custom React hook for handling window resize events.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Usage
+```javascript
+import React, { useState, useEffect } from 'react';
+import useWindowResize from './useWindowResize';
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const MyComponent = () => {
+  const windowSize = useWindowResize();
 
-## Learn More
+  return (
+    <div>
+      <p>Window width: {windowSize.width}</p>
+      <p>Window height: {windowSize.height}</p>
+    </div>
+  );
+};
+```
+### 4. useTimer
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Description
+A custom React hook for handling timing functionalities such as countdowns or periodic tasks.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Parameters
+- `initialTime`: The initial time value for the timer. Default is `0`.
 
-### Code Splitting
+#### Usage
+```javascript
+import React from 'react';
+import useTimer from './useTimer';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+const MyTimerComponent = () => {
+  const { time, isRunning, startTimer, stopTimer, resetTimer } = useTimer();
 
-### Analyzing the Bundle Size
+  return (
+    <div>
+      <p>Time: {time}</p>
+      <button onClick={startTimer}>Start Timer</button>
+      <button onClick={stopTimer}>Stop Timer</button>
+      <button onClick={resetTimer}>Reset Timer</button>
+    </div>
+  );
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

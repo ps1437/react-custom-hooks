@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
 import CodePreview from './components/CodePreview';
-import UseFetchSection from './components/sections/UseFetchSection';
-import UseWindowResizeSection from './components/sections/UseWindowResizeSection';
-import UseTimerSection from './components/sections/UseTimerSection';
 import UseDebounceSection from './components/sections/UseDebounceSection';
-
-
+import UseFetchSection from './components/sections/UseFetchSection';
+import UseOfflineSection from './components/sections/UseOfflineSection';
+import UseTimerSection from './components/sections/UseTimerSection';
+import UseWindowResizeSection from './components/sections/UseWindowResizeSection';
 
 function App() {
   const [selectedHook, setSelectedHook] = useState(null);
@@ -22,20 +21,20 @@ function App() {
     setShowPreview(false);
   };
 
-
   return (
     <div>
       <h1 className="main-header">Hook-Up-Hooks</h1>
       <div className="app-container">
         <UseFetchSection renderComponent={setComponent} handleClick={handleClick} />
         <UseWindowResizeSection renderComponent={setComponent} handleClick={handleClick} />
-        <UseTimerSection renderComponent={setComponent}  handleClick={handleClick} />
+        <UseTimerSection renderComponent={setComponent} handleClick={handleClick} />
         <UseDebounceSection renderComponent={setComponent} handleClick={handleClick} />
-</div>
-      
-      {showPreview && <CodePreview 
-      renderComponent ={component}
-      code={selectedHook} onClose={handleClosePreview} />}
+        <UseOfflineSection renderComponent={setComponent} handleClick={handleClick} />
+      </div>
+
+      {showPreview && <CodePreview
+        renderComponent={component}
+        code={selectedHook} onClose={handleClosePreview} />}
 
     </div>
   );

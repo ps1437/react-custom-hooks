@@ -1,0 +1,26 @@
+{
+    "title": "Hook-Up-Hooks",
+    "sections": [
+      {
+        "name": "UseFetchSection",
+        "description": "A section for fetching data using the Fetch API."
+      },
+      {
+        "name": "UseWindowResizeSection",
+        "description": "A section for handling window resize events."
+      },
+      {
+        "name": "UseTimerSection",
+        "description": "A section for using timers and scheduling tasks."
+      },
+      {
+        "name": "UseDebounceSection",
+        "description": "A section for debouncing user input."
+      },
+      {
+        "name": "UseOfflineSection",
+        "description": "A section for detecting online/offline status."
+      }
+    ]
+  }
+  
